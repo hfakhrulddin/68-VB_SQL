@@ -1,1 +1,2 @@
 C:\Div\Origin\67-SQL-Linq\WindowsApplication1\bin\Debug\WindowsApplication1.exe.config
+C:\Div\Origin\68-VB_SQL\WindowsApplication1\bin\Debug\WindowsApplication1.exe.config
