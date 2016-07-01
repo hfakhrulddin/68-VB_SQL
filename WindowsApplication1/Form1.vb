@@ -39,7 +39,27 @@
         If cbxUsers.Items.Count > 0 Then cbxUsers.SelectedIndex = 0
     End Sub
 
+    Private Sub ReadUserByName(sender As System.Object, e As System.EventArgs) Handles cmdSave.Click
+        ' ADD QUERY PARAMS
+        Sql.AddParam("@user", txtUser.Text)
 
+        ' QUERY FOR USER
+        Sql.ExecQuery("SELECT username FROM members WHERE username = @user ")
+
+        ' REPORT & ABORT IF USER EXISTS
+        If Sql.DBDT.Rows.Count > 0 Then MsgBox("User already exists!") : Exit Sub
+
+        ' CREATE NEW USER
+        CreateUser()
+
+        ' CLEAN UP FIELDS
+        txtUser.Clear()
+        txtPass.Clear()
+        txtEmail.Clear()
+        txtWebsite.Clear()
+        cbActive.Checked = True
+        cbAdmin.Checked = False
+    End Sub
 
 
 

@@ -53,14 +53,9 @@ Public Class CURD_SQL
         If DBCon.State = ConnectionState.Open Then DBCon.Close()
     End Sub
 
-
-
-
-
     ' ADD PARAM SUB
     ' QUERY PARAMETERS
     Public Params As New List(Of SqlParameter)
-
     Public Sub AddParam(Name As String, Value As Object)
         Dim NewParam As New SqlParameter(Name, Value)
         Params.Add(NewParam)
