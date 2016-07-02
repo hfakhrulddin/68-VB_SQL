@@ -1,6 +1,28 @@
 ﻿Public Class Form1
     Dim Sql As New CURD_SQL
 
+    ' SHORTEN ERROR CHECKS
+    Private Function NotEmpty(val As String) As Boolean
+        If Not String.IsNullOrEmpty(val) Then Return True Else Return False
+    End Function
+
+    Private Sub cmdQuery_Click(sender As System.Object, e As System.EventArgs) Handles cmdQuery.Click
+        ' EXECUTE QUERY/COMMAND
+        Sql.ExecQuery(txtQuery.Text)
+
+        ' REPORT & ABORT ON ERRORS
+        If NotEmpty(Sql.Exception) Then MsgBox(Sql.Exception) : Exit Sub
+
+        ' SEND QUERY RESULTS TO DATAGRIDVIEW
+        DGVData.DataSource = Sql.DBDT
+    End Sub
+
+
+
+
+
+    'CURD Operations
+
     Public Sub CreateUser()
         ' VALIDATE REQUIRED FIELDS
         If Len(txtUser.Text) < 6 Then MsgBox("Username too short.") : Exit Sub
@@ -38,6 +60,10 @@
         ' SELECT FIRST USER IF USERS ARE FOUND
         If cbxUsers.Items.Count > 0 Then cbxUsers.SelectedIndex = 0
     End Sub
+
+
+
+
 
     Private Sub ReadUserByName(sender As System.Object, e As System.EventArgs) Handles cmdSave.Click
         ' ADD QUERY PARAMS
