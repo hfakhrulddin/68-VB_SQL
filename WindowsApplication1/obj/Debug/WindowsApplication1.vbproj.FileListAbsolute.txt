@@ -1,2 +1,6 @@
 C:\Div\Origin\67-SQL-Linq\WindowsApplication1\bin\Debug\WindowsApplication1.exe.config
 C:\Div\Origin\68-VB_SQL\WindowsApplication1\bin\Debug\WindowsApplication1.exe.config
+C:\Div\Origin\68-VB_SQL\WindowsApplication1\obj\Debug\WindowsApplication1.vbprojResolveAssemblyReference.cache
+C:\Div\Origin\68-VB_SQL\WindowsApplication1\obj\Debug\WindowsApplication1.Form1.resources
+C:\Div\Origin\68-VB_SQL\WindowsApplication1\obj\Debug\WindowsApplication1.Resources.resources
+C:\Div\Origin\68-VB_SQL\WindowsApplication1\obj\Debug\WindowsApplication1.vbproj.GenerateResource.Cache
