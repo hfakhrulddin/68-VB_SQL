@@ -17,10 +17,6 @@
         DGVData.DataSource = Sql.DBDT
     End Sub
 
-
-
-
-
     'CURD Operations
 
     Public Sub CreateUser()
@@ -61,9 +57,50 @@
         If cbxUsers.Items.Count > 0 Then cbxUsers.SelectedIndex = 0
     End Sub
 
+    Private Sub UpdateUserByName(sender As System.Object, e As System.EventArgs) Handles cmdSave.Click
+        ' ADD QUERY PARAMS
+        Sql.AddParam("@user", txtUser.Text)
+        Sql.AddParam("@id", txtId.Text)
 
+        ' QUERY FOR USER
+        Sql.ExecQuery("Update members SET username = @user WHERE userid = @id ")
 
+        ' REPORT & ABORT IF USER EXISTS
+        If Sql.DBDT.Rows.Count > 0 Then MsgBox("User already exists!") : Exit Sub
 
+        ' CREATE NEW USER
+        CreateUser()
+
+        ' CLEAN UP FIELDS
+        txtUser.Clear()
+        txtPass.Clear()
+        txtEmail.Clear()
+        txtWebsite.Clear()
+        cbActive.Checked = True
+        cbAdmin.Checked = False
+    End Sub
+
+    Private Sub DeleteUserByName(sender As System.Object, e As System.EventArgs) Handles cmdSave.Click
+        ' ADD QUERY PARAMS
+        Sql.AddParam("@user", txtUser.Text)
+
+        ' QUERY FOR USER
+        Sql.ExecQuery("Delete FROM members WHERE username = @user ")
+
+        ' REPORT & ABORT IF USER EXISTS
+        If Sql.DBDT.Rows.Count > 0 Then MsgBox("User already exists!") : Exit Sub
+
+        ' CREATE NEW USER
+        CreateUser()
+
+        ' CLEAN UP FIELDS
+        txtUser.Clear()
+        txtPass.Clear()
+        txtEmail.Clear()
+        txtWebsite.Clear()
+        cbActive.Checked = True
+        cbAdmin.Checked = False
+    End Sub
 
     Private Sub ReadUserByName(sender As System.Object, e As System.EventArgs) Handles cmdSave.Click
         ' ADD QUERY PARAMS
@@ -86,9 +123,5 @@
         cbActive.Checked = True
         cbAdmin.Checked = False
     End Sub
-
-
-
-
 
 End Class
